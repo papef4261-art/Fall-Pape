@@ -44,5 +44,6 @@ coverage/
 
 # Keep package locks & data records explicitly tracked
 !package-lock.json
+!bun.lock
 !data/
 !data/payment_records.json
