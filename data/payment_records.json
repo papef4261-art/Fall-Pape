@@ -69,6 +69,20 @@
       "paymentMethod": "wave",
       "lastTransactionId": "tx_1788800251434_xepp5",
       "updatedAt": "2026-09-07T16:57:31.435Z"
+    },
+    "test": {
+      "userId": "test",
+      "status": "trial",
+      "plan": "trial",
+      "amount": 0,
+      "currency": "FCFA",
+      "trialStartDate": "2026-09-12T13:33:00.947Z",
+      "trialEndDate": "2026-09-19T13:33:00.947Z",
+      "trialUsed": true,
+      "trialDaysRemaining": 7,
+      "startDate": "2026-09-12T13:33:00.947Z",
+      "endDate": "2026-09-19T13:33:00.947Z",
+      "updatedAt": "2026-09-12T13:33:00.947Z"
     }
   },
   "transactions": {

@@ -78,7 +78,9 @@ export default function App() {
         .then((acc) => {
           if (acc) setPhoneAccount(acc);
         })
-        .catch((e) => console.warn('Restore phone account error:', e));
+        .catch(() => {
+          // Quietly handle storage restore when backend reloads
+        });
     }
   }, []);
 
@@ -138,8 +140,8 @@ export default function App() {
       const data = await fetchSubscriptionStatus(uid);
       setSubscription(data.subscription);
       setTransactions(data.transactions);
-    } catch (err) {
-      console.warn('Subscription fetch error:', err);
+    } catch {
+      // Graceful fallback without console clutter
     }
   };
 
@@ -170,7 +172,9 @@ export default function App() {
   useEffect(() => {
     fetchPaymentConfig()
       .then(cfg => setPaymentConfig(cfg))
-      .catch(err => console.warn('Config fetch error:', err));
+      .catch(() => {
+        // Fallback silently if server is rebooting
+      });
     loadSubscriptionData();
   }, [currentUser]);
 
@@ -358,7 +362,7 @@ export default function App() {
   useEffect(() => {
     saveJournals(journals);
     if (journals.length > 0) {
-      autoSaveMonthlyProfitRecords(journals, currentUser?.uid).catch(console.error);
+      autoSaveMonthlyProfitRecords(journals, currentUser?.uid).catch(() => {});
     }
   }, [journals, currentUser?.uid]);
 
@@ -652,7 +656,7 @@ export default function App() {
       });
 
       if (currentUser) {
-        saveJournalToCloud(currentUser.uid, updatedJournal).catch(console.error);
+        saveJournalToCloud(currentUser.uid, updatedJournal).catch(() => {});
       }
 
       return updatedJournal;

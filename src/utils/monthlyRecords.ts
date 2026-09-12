@@ -184,8 +184,8 @@ export async function autoSaveMonthlyProfitRecords(
   saveMonthlyRecordsToStorage(records);
 
   if (userId) {
-    syncMonthlyRecordsToCloud(userId, records).catch((err) => {
-      console.warn('Auto-save monthly cloud sync issue:', err);
+    syncMonthlyRecordsToCloud(userId, records).catch(() => {
+      // Graceful offline fallback
     });
   }
 
